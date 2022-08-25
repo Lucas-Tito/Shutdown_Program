@@ -50,12 +50,12 @@ void Regras(void){
     bool sim = regras=='s' || regras=='S';
     if(sim){
         printf("\n\n#################-FUNCIONAMENTO-#################\n\n\n");
-        printf("Voce ira fornecer as horas e minutos para agendar o desligamento do computador\n");
-        printf("\n----COMO ESCREVER O TEMPO----\n");
-        printf("> Digite as horas\n");
-        printf("> Digite os minutos\n");
+        printf("Voce ira fornecer as horas e minutos para o desligamento do computador.\n");
+        printf("\n----COMO ESCREVER O TEMPO----\n\n");
+        printf("> Digite as horas.\n");
+        printf("> Digite os minutos.\n");
         printf("> Se nao desejas informar os minutos ou horas, digite 0.\n");
-        printf("> *nao use espacamento ou simbolos. => EX: 1 (uma hora)\n");
+        printf("> *nao use espacamento ou simbolos. => EX: 1 (uma hora).\n");
         printf("\n\n\n#############################################\n\n\n");
         printf("Pressione Qualquer Tecla Para Continuar\n");
         getch();
@@ -78,7 +78,7 @@ void Input(void){
     scanf("%d", &hora);
         
     
-    printf("\nInforme o(s) minuto(s) para o desligamento: ");
+    printf("\n> Informe o(s) minuto(s) para o desligamento: ");
     scanf("%d", &minuto);
         
  
@@ -105,15 +105,20 @@ void Process(void){
 
 
 void Confirm(void){
+
         char confirm=0;
-        printf("DESLIGAMENTO AGENDADO PARA %d HORAS E %d MINUTOS\n", hora, minuto);
+        printf("DESLIGAMENTO AGENDADO PARA %d HORA(S) E %d MINUTO(S)\n\n", hora, minuto);
         printf("Este realmente e o horario desejado? [S/N] ");
         scanf(" %c", &confirm);
         
         bool nao = confirm=='n' || confirm=='N';
         if(nao){
-            printf("\nDESLIGAMENTO CANCELADO\n");
             system("shutdown -a");
+            printf("\nDESLIGAMENTO CANCELADO\n");
         }
+        else{
+             printf("\nDESLIGAMENTO AGENDADO\n");
+        }
+           
 
     }
