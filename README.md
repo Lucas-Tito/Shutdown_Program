@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://eu-images.contentstack.com/v3/assets/blt66983808af36a8ef/blt62c514926ab80c97/60e389f2291ae223364da9a4/unplug.png" alt="header" width="50%" height="50%"/>
+</p>
+
 # Observations
 
 + colored version doesn't work on terminals like cmd.
