@@ -3,6 +3,12 @@
 #include<stdlib.h> 
 #include<conio.h>
 
+#define greenfont "\x1b[32m"
+#define yellowfont "\x1b[33m"
+#define redfont "\x1b[31m"
+#define resetfont "\x1b[0m"
+#define clearOutput "\e[1;1H\e[2J"
+
 int hora, minuto;
 
 int main(){
@@ -12,11 +18,12 @@ int main(){
     void Process(void);
     void Confirm(void);
 
-    printf("\n------------------------BEM VINDO(A)------------------------\n\n");
+    
+    printf(greenfont "\n------------------------BEM VINDO(A)------------------------\n\n" resetfont);
 
     Regras();
 
-    printf("\n\n\n---------------------ENTRADA DE DADOS---------------------\n");
+    printf(clearOutput yellowfont "\n\n\n---------------------ENTRADA DE DADOS---------------------\n" resetfont);
 
     Input();
     Process();
@@ -72,8 +79,8 @@ void Input(void){
     /*ENTRADA DE DADOS*/
     
      
-        printf("\n*OBS: nao use espacamento ou simbolos. => Exemplo: 1");
-        printf("\n\nInforme a(s) hora(s) para o desligamento: ");
+        printf(redfont "\n*OBS: nao use espacamento ou simbolos. -> Exemplo: 1" resetfont);
+        printf("\n\n> Hora(s) para o desligamento: ");
             scanf("%d", &hora);
         
     
