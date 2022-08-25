@@ -55,7 +55,7 @@ void Regras(void){
     bool sim = regras=='s' || regras=='S';
     if(sim){
         printf(clearOutput yellowfont "\n\n#################-FUNCIONAMENTO-#################\n\n\n" resetfont);
-        printf(yellowfont "Voce ira fornecer as horas e minutos para agendar o desligamento do computador.\n\n" resetfont);
+        printf(yellowfont "Voce ira fornecer as horas e minutos para o desligamento do computador.\n\n" resetfont);
         printf(purplefont "\n----COMO ESCREVER O TEMPO----\n" resetfont);
         printf("> Digite as horas.\n");
         printf("> Digite os minutos.\n");
@@ -78,14 +78,14 @@ void Input(void){
     /*ENTRADA DE DADOS*/
     
      
-        printf(redfont "\n*OBS: nao use espacamento ou simbolos." resetfont);
-        printf(" -> Exemplo: 1");
-        printf("\n\n> Hora(s) para o desligamento: ");
-            scanf("%d", &hora);
+    printf(redfont "\n*OBS: nao use espacamento ou simbolos." resetfont);
+    printf(" -> Exemplo: 1");
+    printf("\n\n> Hora(s) para o desligamento: ");
+    scanf("%d", &hora);
         
     
-        printf("\n> Minuto(s) para o desligamento: ");
-            scanf("%d", &minuto);
+    printf("\n> Minuto(s) para o desligamento: ");
+    scanf("%d", &minuto);
         
  
 }
@@ -97,13 +97,13 @@ void Input(void){
 void Process(void){
 
 
-int tempo = (hora*3600)+(minuto*60);
+    int tempo = (hora*3600)+(minuto*60);
    
 
-char buffer[50];
+    char buffer[50];
 
-sprintf(buffer, "shutdown -s -t %d", tempo);
-system(buffer);
+    sprintf(buffer, "shutdown -s -t %d", tempo);
+    system(buffer);
 
 
 
@@ -111,6 +111,7 @@ system(buffer);
 
 
 void Confirm(void){
+
         char confirm=0;
         printf(redfont "DESLIGAMENTO AGENDADO PARA %d HORA(S) E %d MINUTO(S)\n" resetfont, hora, minuto);
         printf("\nEste realmente e o horario desejado? [S/N] ");
@@ -121,5 +122,9 @@ void Confirm(void){
             system("shutdown -a");
             printf(clearOutput redfont "\nDESLIGAMENTO CANCELADO\n" resetfont);
         }
+        else{
+            printf(clearOutput redfont "\nDESLIGAMENTO AGENDADO\n" resetfont);
+        }
+            
 
     }
