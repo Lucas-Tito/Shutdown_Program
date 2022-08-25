@@ -1,7 +1,7 @@
 # Observations
 
 + colored version doesn't work on terminals like cmd.
-+ for practicality, use stable version.
++ for practicality, use recomended version.
 
 
 <br><br><br>
