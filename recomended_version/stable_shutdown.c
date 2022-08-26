@@ -3,33 +3,32 @@
 #include<stdlib.h> 
 #include<conio.h>
 
-int hora, minuto;
+int hour, minute;
 
 int main(){
    
-    void Regras(void);                        
+    void Rules(void);                        
     void Input(void);
     void Process(void);
     void Confirm(void);
 
-    printf("\n------------------------BEM VINDO(A)------------------------\n\n");
+    printf("\n------------------------WELCOME------------------------\n\n");
 
-    Regras();
+    Rules();
 
-    printf("\n\n\n---------------------ENTRADA DE DADOS---------------------\n");
+    printf("\n\n\n---------------------INPUT---------------------\n");
 
     Input();
     Process();
 
-    printf("\n\n#################-CONFIRMAR-#################\n\n");
+    printf("\n\n#################-CONFIRM-#################\n\n");
 
     Confirm();
     
     printf("\n#############################################\n\n");
 
-  
-   
-    printf("\n\nAperte Qualquer Tecla Para Encerrar\n\n");
+
+    printf("\n\nPress any key to close.\n\n");
     getch();
         
     return 0;
@@ -43,24 +42,25 @@ int main(){
 
 
 
-void Regras(void){
-    char regras; 
-    printf("Deseja conhecer o funcionamento do programa? [S/N] ");
-    scanf("%c", &regras);
-    bool sim = regras=='s' || regras=='S';
-    if(sim){
-        printf("\n\n#################-FUNCIONAMENTO-#################\n\n\n");
-        printf("Voce ira fornecer as horas e minutos para o desligamento do computador.\n");
-        printf("\n----COMO ESCREVER O TEMPO----\n\n");
-        printf("> Digite as horas.\n");
-        printf("> Digite os minutos.\n");
-        printf("> Se nao desejas informar os minutos ou horas, digite 0.\n");
-        printf("> *nao use espacamento ou simbolos. => EX: 1 (uma hora).\n");
+void Rules(void){
+    
+    char rules; 
+    printf("Wanna know how to operate the program? [Y/N] ");
+    scanf("%c", &rules);
+    bool yes = rules=='y' || rules=='Y';
+
+    if(yes){
+        printf("\n\n#################-OPERATION-#################\n\n\n");
+        printf("You need to provide the hours and minutes to the shutdown.\n");
+        printf("\n----HOW TO WRITE THE TIME----\n\n");
+        printf("> Enter hours.\n");
+        printf("> Enter minutes.\n");
+        printf("> If you don't wanna provide the minutes or hours, enter 0.\n");
+        printf("> *don't use spaces or symbols.\n");
         printf("\n\n\n#############################################\n\n\n");
-        printf("Pressione Qualquer Tecla Para Continuar\n");
+        printf("Press any key to continue.\n");
         getch();
     }
-
 
 }
 
@@ -70,17 +70,13 @@ void Regras(void){
 
 
 void Input(void){
-    /*ENTRADA DE DADOS*/
-    
      
-    printf("\n*OBS: nao use espacamento ou simbolos. -> Exemplo: 1");
-    printf("\n\n> Hora(s) para o desligamento: ");
-    scanf("%d", &hora);
+    printf("\n*OBS: don't use spaces or symbols.");
+    printf("\n\n> Hour(s) to the shutdown: ");
+    scanf("%d", &hour);
         
-    
-    printf("\n> Informe o(s) minuto(s) para o desligamento: ");
-    scanf("%d", &minuto);
-        
+    printf("\n> Minute(s) to the shutdown: ");
+    scanf("%d", &minute);
  
 }
 
@@ -90,35 +86,29 @@ void Input(void){
 
 void Process(void){
 
-
-    int tempo = (hora*3600)+(minuto*60);
-   
-
+    int time = (hour*3600)+(minute*60);
     char buffer[50];
 
-    sprintf(buffer, "shutdown -s -t %d", tempo);
+    sprintf(buffer, "shutdown -s -t %d", time);
     system(buffer);
-
-
 
 }
 
 
 void Confirm(void){
 
-        char confirm=0;
-        printf("DESLIGAMENTO AGENDADO PARA %d HORA(S) E %d MINUTO(S)\n\n", hora, minuto);
-        printf("Este realmente e o horario desejado? [S/N] ");
-        scanf(" %c", &confirm);
+    char confirm=0;
+    printf("SHUTDOWN SCHEDULED TO %d HOUR(S) AND %d MINUTE(S)\n\n", hour, minute);
+    printf("This is really the desired time? [S/N] ");
+    scanf(" %c", &confirm);
         
-        bool nao = confirm=='n' || confirm=='N';
-        if(nao){
-            system("shutdown -a");
-            printf("\nDESLIGAMENTO CANCELADO\n");
-        }
-        else{
-             printf("\nDESLIGAMENTO AGENDADO\n");
-        }
-           
-
+    bool no = confirm=='n' || confirm=='N';
+    if(no){
+        system("shutdown -a");
+        printf("\nSHUTDOWN CANCELED\n");
     }
+    else{
+        printf("\nSHUTDOWN SHCEDULED\n");
+    }
+
+}
