@@ -32,7 +32,6 @@ int main(){
     printf(clearOutput yellowfont "\n\n#################-CONFIRM-#################\n\n" resetfont);
 
     Confirm();
-    
   
     printf(greenfont "\n\nPress any key to close.\n\n" resetfont);
     getch();
@@ -45,10 +44,8 @@ int main(){
 
 
 
-
-
-
 void Rules(void){
+
     char rules; 
     printf("Wanna know how to operate the program? [Y/N] ");
     scanf("%c", &rules);
@@ -63,7 +60,6 @@ void Rules(void){
         printf(greenfont "\n\nPress any key to continue\n");
         getch();
     }
-
 
 }
 
