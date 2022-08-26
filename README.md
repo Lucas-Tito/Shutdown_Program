@@ -12,7 +12,7 @@ Sometimes I wanted to download a large file and go to sleep, but when I did that
 
 
 <br><br><br>
-## Observations
+### Observations
 
 + colored version doesn't work on terminals like cmd (but work on vscode teminal for example).
 + for practicality, use recomended version.
