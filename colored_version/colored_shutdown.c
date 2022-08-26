@@ -10,31 +10,31 @@
 #define resetfont "\x1b[0m"
 #define clearOutput "\e[1;1H\e[2J"
 
-int hora, minuto;
+int hour, minute;
 
 int main(){
    
-    void Regras(void);                        
+    void Rules(void);                        
     void Input(void);
     void Process(void);
     void Confirm(void);
 
     printf(greenfont);
-    printf(greenfont "\n------------------------BEM VINDO(A)------------------------\n\n" resetfont);
+    printf(greenfont "\n------------------------WELCOME------------------------\n\n" resetfont);
 
-    Regras();
+    Rules();
 
-    printf(clearOutput yellowfont "\n\n\n---------------------ENTRADA DE DADOS---------------------\n" resetfont);
+    printf(clearOutput yellowfont "\n\n\n---------------------INPUT---------------------\n" resetfont);
 
     Input();
     Process();
 
-    printf(clearOutput yellowfont "\n\n#################-CONFIRMAR-#################\n\n" resetfont);
+    printf(clearOutput yellowfont "\n\n#################-CONFIRM-#################\n\n" resetfont);
 
     Confirm();
     
   
-    printf(greenfont "\n\nAperte Qualquer Tecla Para Encerrar\n\n" resetfont);
+    printf(greenfont "\n\nPress any key to close.\n\n" resetfont);
     getch();
         
     return 0;
@@ -48,21 +48,19 @@ int main(){
 
 
 
-void Regras(void){
-    char regras; 
-    printf("Deseja conhecer o funcionamento do programa? [S/N] ");
-    scanf("%c", &regras);
-    bool sim = regras=='s' || regras=='S';
-    if(sim){
-        printf(clearOutput yellowfont "\n\n#################-FUNCIONAMENTO-#################\n\n\n" resetfont);
-        printf(yellowfont "Voce ira fornecer as horas e minutos para o desligamento do computador.\n\n" resetfont);
-        printf(purplefont "\n----COMO ESCREVER O TEMPO----\n" resetfont);
-        printf("> Digite as horas.\n");
-        printf("> Digite os minutos.\n");
-        printf("> Se nao desejas informar os minutos ou as horas, digite 0.\n");
-        printf(redfont "> *nao use espacamento ou simbolos" resetfont);
-        printf(". => EX: 1 (uma hora)\n\n\n");
-        printf(greenfont "Pressione Qualquer Tecla Para Continuar\n");
+void Rules(void){
+    char rules; 
+    printf("Wanna know how to operate the program? [Y/N] ");
+    scanf("%c", &rules);
+    bool yes = rules=='y' || rules=='Y';
+    if(yes){
+        printf(clearOutput yellowfont "You need to provide the hours and minutes for the shutdown.\n\n" resetfont);
+        printf(purplefont "\n----HOW TO WRITE THE TIME----\n" resetfont);
+        printf("> Enter hours.\n");
+        printf("> Enter minutes.\n");
+        printf("> If you don't wanna provide the minutes or hours, enter 0.\n");
+        printf(redfont "> *don't use spaces or symbols." resetfont);
+        printf(greenfont "\n\nPress any key to continue\n");
         getch();
     }
 
@@ -75,18 +73,13 @@ void Regras(void){
 
 
 void Input(void){
-    /*ENTRADA DE DADOS*/
-    
      
-    printf(redfont "\n*OBS: nao use espacamento ou simbolos." resetfont);
-    printf(" -> Exemplo: 1");
-    printf("\n\n> Hora(s) para o desligamento: ");
-    scanf("%d", &hora);
+    printf(redfont "\n*OBS: don't use spaces or symbols." resetfont);
+    printf("\n\n> Hour(s) to the shutdown: ");
+    scanf("%d", &hour);
         
-    
-    printf("\n> Minuto(s) para o desligamento: ");
-    scanf("%d", &minuto);
-        
+    printf("\n> Minute(s) to the shutdown: ");
+    scanf("%d", &minute);
  
 }
 
@@ -96,16 +89,11 @@ void Input(void){
 
 void Process(void){
 
-
-    int tempo = (hora*3600)+(minuto*60);
-   
-
+    int time = (hour*3600)+(minute*60);
     char buffer[50];
 
-    sprintf(buffer, "shutdown -s -t %d", tempo);
+    sprintf(buffer, "shutdown -s -t %d", time);
     system(buffer);
-
-
 
 }
 
@@ -113,18 +101,17 @@ void Process(void){
 void Confirm(void){
 
         char confirm=0;
-        printf(redfont "DESLIGAMENTO AGENDADO PARA %d HORA(S) E %d MINUTO(S)\n" resetfont, hora, minuto);
-        printf("\nEste realmente e o horario desejado? [S/N] ");
+        printf(redfont "SHUTDOWN SCHEDULED TO %d HOUR(S) AND %d MINUTE(S)\n" resetfont, hour, minute);
+        printf("\nThis is really the desired time? [Y/N] ");
         scanf(" %c", &confirm);
         
-        bool nao = confirm=='n' || confirm=='N';
-        if(nao){
+        bool no = confirm=='n' || confirm=='N';
+        if(no){
             system("shutdown -a");
-            printf(clearOutput redfont "\nDESLIGAMENTO CANCELADO\n" resetfont);
+            printf(clearOutput redfont "\nSHUTDOWN CANCELED\n" resetfont);
         }
         else{
-            printf(clearOutput redfont "\nDESLIGAMENTO AGENDADO\n" resetfont);
-        }
-            
+            printf(clearOutput redfont "\nSHUTDOWN SCHEDULED\n" resetfont);
+        }  
 
     }
