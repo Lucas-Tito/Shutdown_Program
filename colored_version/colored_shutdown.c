@@ -50,8 +50,9 @@ void Rules(void){
     printf("Wanna know how to operate the program? [Y/N] ");
     scanf("%c", &rules);
     bool yes = rules=='y' || rules=='Y';
+
     if(yes){
-        printf(clearOutput yellowfont "You need to provide the hours and minutes for the shutdown.\n\n" resetfont);
+        printf(clearOutput yellowfont "You need to provide the hours and minutes to the shutdown.\n\n" resetfont);
         printf(purplefont "\n----HOW TO WRITE THE TIME----\n" resetfont);
         printf("> Enter hours.\n");
         printf("> Enter minutes.\n");
@@ -96,18 +97,18 @@ void Process(void){
 
 void Confirm(void){
 
-        char confirm=0;
-        printf(redfont "SHUTDOWN SCHEDULED TO %d HOUR(S) AND %d MINUTE(S)\n" resetfont, hour, minute);
-        printf("\nThis is really the desired time? [Y/N] ");
-        scanf(" %c", &confirm);
+    char confirm=0;
+    printf(redfont "SHUTDOWN SCHEDULED TO %d HOUR(S) AND %d MINUTE(S)\n" resetfont, hour, minute);
+    printf("\nThis is really the desired time? [Y/N] ");
+    scanf(" %c", &confirm);
         
-        bool no = confirm=='n' || confirm=='N';
-        if(no){
-            system("shutdown -a");
-            printf(clearOutput redfont "\nSHUTDOWN CANCELED\n" resetfont);
-        }
-        else{
-            printf(clearOutput redfont "\nSHUTDOWN SCHEDULED\n" resetfont);
-        }  
-
+    bool no = confirm=='n' || confirm=='N';
+    if(no){
+        system("shutdown -a");
+        printf(clearOutput redfont "\nSHUTDOWN CANCELED\n" resetfont);
     }
+    else{
+        printf(clearOutput redfont "\nSHUTDOWN SCHEDULED\n" resetfont);
+    }  
+
+}
